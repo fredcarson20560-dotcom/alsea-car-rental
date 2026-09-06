@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Alsea Car Rental | Nairobi</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#050505;
+    color:white;
+    line-height:1.6;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+:root{
+    --green:#b7ff00;
+    --dark:#050505;
+    --card:#101010;
+    --gray:#999;
+}
+
+/* HEADER */
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:1000;
+    background:rgba(5,5,5,.94);
+    border-bottom:1px solid #222;
+    backdrop-filter:blur(10px);
+}
+
+.nav{
+    max-width:1200px;
+    margin:auto;
+    padding:15px 20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo img{
+    width:155px;
+    height:auto;
+    display:block;
+}
+
+nav{
+    display:flex;
+    gap:25px;
+}
+
+nav a{
+    font-size:13px;
+    font-weight:bold;
+    letter-spacing:1px;
+}
+
+nav a:hover{
+    color:var(--green);
+}
+
+.menu{
+    display:none;
+    font-size:28px;
+}
+
+/* HERO */
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    position:relative;
+    overflow:hidden;
+    background:
+    linear-gradient(90deg,rgba(0,0,0,.92),rgba(0,0,0,.35)),
+    url("https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=2000&q=90")
+    center/cover;
+}
+
+.hero-content{
+    width:1200px;
+    max-width:100%;
+    margin:auto;
+    padding:120px 25px 70px;
+}
+
+.small-title{
+    color:var(--green);
+    font-size:13px;
+    font-weight:bold;
+    letter-spacing:4px;
+    margin-bottom:20px;
+}
+
+.hero h1{
+    font-size:clamp(50px,9vw,105px);
+    line-height:.9;
+    max-width:800px;
+    letter-spacing:-4px;
+}
+
+.hero h1 span{
+    color:var(--green);
+}
+
+.hero p{
+    max-width:550px;
+    margin-top:25px;
+    color:#ccc;
+    font-size:18px;
+}
+
+.buttons{
+    display:flex;
+    gap:15px;
+    margin-top:35px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    display:inline-block;
+    padding:15px 25px;
+    font-weight:bold;
+    border:1px solid var(--green);
+    transition:.3s;
+}
+
+.btn.green{
+    background:var(--green);
+    color:#000;
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+}
+
+/* INFO */
+.info{
+    background:var(--green);
+    color:#000;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    text-align:center;
+}
+
+.info div{
+    padding:25px 10px;
+    border-right:1px solid rgba(0,0,0,.2);
+}
+
+.info strong{
+    display:block;
+    font-size:14px;
+    letter-spacing:1px;
+}
+
+.info span{
+    font-size:12px;
+}
+
+/* GENERAL */
+section{
+    padding:100px 20px;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+}
+
+.section-label{
+    color:var(--green);
+    font-size:12px;
+    letter-spacing:4px;
+    font-weight:bold;
+    margin-bottom:15px;
+}
+
+.section-title{
+    font-size:clamp(38px,6vw,70px);
+    line-height:1;
+    margin-bottom:45px;
+}
+
+/* FLEET */
+.fleet-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.car{
+    background:var(--card);
+    border:1px solid #222;
+    overflow:hidden;
+    transition:.3s;
+}
+
+.car:hover{
+    transform:translateY(-8px);
+    border-color:var(--green);
+}
+
+.car-img{
+    height:260px;
+    overflow:hidden;
+}
+
+.car-img img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.5s;
+}
+
+.car:hover img{
+    transform:scale(1.06);
+}
+
+.car-info{
+    padding:25px;
+}
+
+.car-info h3{
+    font-size:25px;
+}
+
+.car-info p{
+    color:var(--gray);
+    margin:8px 0 20px;
+}
+
+.inquire{
+    display:inline-block;
+    color:var(--green);
+    font-weight:bold;
+    font-size:13px;
+    letter-spacing:1px;
+}
+
+/* WHY */
+.why{
+    background:#0b0b0b;
+}
+
+.why-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.feature{
+    border-top:2px solid var(--green);
+    padding:25px;
+    background:#111;
+}
+
+.feature-number{
+    color:var(--green);
+    font-size:13px;
+    font-weight:bold;
+}
+
+.feature h3{
+    margin:15px 0 10px;
+    font-size:22px;
+}
+
+.feature p{
+    color:#999;
+    font-size:14px;
+}
+
+/* SERVICES */
+.services-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+
+.service{
+    padding:35px;
+    background:#101010;
+    border:1px solid #222;
+}
+
+.service h3{
+    color:var(--green);
+    font-size:25px;
+    margin-bottom:10px;
+}
+
+.service p{
+    color:#aaa;
+}
+
+/* HOW */
+.steps{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.step{
+    padding:35px;
+    border:1px solid #222;
+}
+
+.step-number{
+    font-size:50px;
+    color:var(--green);
+    font-weight:bold;
+}
+
+.step h3{
+    margin:10px 0;
+}
+
+.step p{
+    color:#999;
+}
+
+/* INQUIRY */
+.inquiry{
+    background:#0b0b0b;
+}
+
+.form{
+    max-width:750px;
+    background:#101010;
+    padding:35px;
+    border:1px solid #222;
+}
+
+.form input,
+.form select,
+.form textarea{
+    width:100%;
+    background:#050505;
+    color:white;
+    border:1px solid #333;
+    padding:15px;
+    margin-bottom:15px;
+    outline:none;
+    font-size:15px;
+}
+
+.form input:focus,
+.form select:focus,
+.form textarea:focus{
+    border-color:var(--green);
+}
+
+.form textarea{
+    min-height:130px;
+    resize:vertical;
+}
+
+.form button{
+    width:100%;
+    border:none;
+    padding:17px;
+    background:var(--green);
+    color:#000;
+    font-size:15px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+/* CONTACT */
+.contact-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+
+.contact-card{
+    padding:35px;
+    background:#101010;
+    border:1px solid #222;
+}
+
+.contact-card h3{
+    color:var(--green);
+    margin-bottom:10px;
+}
+
+.contact-card p{
+    color:#aaa;
+    margin-bottom:20px;
+}
+
+/* CTA */
+.cta{
+    text-align:center;
+    background:var(--green);
+    color:#000;
+}
+
+.cta h2{
+    font-size:clamp(40px,7vw,80px);
+    line-height:1;
+}
+
+.cta p{
+    margin:20px auto;
+    max-width:600px;
+}
+
+.cta .btn{
+    border-color:#000;
+    background:#000;
+    color:var(--green);
+}
+
+/* FOOTER */
+footer{
+    background:#000;
+    padding:50px 20px;
+}
+
+.footer{
+    max-width:1200px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    gap:30px;
+    flex-wrap:wrap;
+}
+
+.footer-logo{
+    width:170px;
+    margin-bottom:15px;
+}
+
+.footer p{
+    color:#777;
+    max-width:350px;
+}
+
+.footer-links{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.footer-links a:hover{
+    color:var(--green);
+}
+
+.copyright{
+    max-width:1200px;
+    margin:40px auto 0;
+    padding-top:20px;
+    border-top:1px solid #222;
+    color:#555;
+    font-size:12px;
+}
+
+/* WHATSAPP */
+.whatsapp{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    z-index:999;
+    width:58px;
+    height:58px;
+    border-radius:50%;
+    background:#25D366;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:25px;
+    box-shadow:0 5px 25px rgba(0,0,0,.4);
+}
+
+/* MOBILE */
+@media(max-width:800px){
+
+    nav{
+        display:none;
+    }
+
+    .menu{
+        display:block;
+    }
+
+    .hero{
+        min-height:90vh;
+    }
+
+    .hero h1{
+        letter-spacing:-2px;
+    }
+
+    .info{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .fleet-grid,
+    .why-grid,
+    .services-grid,
+    .steps,
+    .contact-grid{
+        grid-template-columns:1fr;
+    }
+
+    section{
+        padding:75px 18px;
+    }
+
+    .form{
+        padding:22px;
+    }
+
+    .logo img{
+        width:130px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="nav">
+
+<a href="#home" class="logo">
+<img src="logo.png" alt="Alsea Car Rental">
+</a>
+
+<nav>
+<a href="#home">HOME</a>
+<a href="#fleet">FLEET</a>
+<a href="#services">SERVICES</a>
+<a href="#inquiry">INQUIRE</a>
+<a href="#contact">CONTACT</a>
+</nav>
+
+<div class="menu">☰</div>
+
+</div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+
+<div class="hero-content">
+
+<div class="small-title">ALSEA CAR RENTAL • NAIROBI</div>
+
+<h1>
+DRIVE<br>
+YOUR <span>WAY.</span>
+</h1>
+
+<p>
+Premium car rental services in Nairobi, Kilimani,
+Ruiru and surrounding areas. Choose your vehicle
+and make your inquiry directly through WhatsApp.
+</p>
+
+<div class="buttons">
+<a href="#fleet" class="btn green">VIEW FLEET</a>
+<a href="#inquiry" class="btn">MAKE AN INQUIRY</a>
+</div>
+
+</div>
+</section>
+
+<!-- INFO -->
+<div class="info">
+
+<div>
+<strong>KILIMANI</strong>
+<span>NAIROBI</span>
+</div>
+
+<div>
+<strong>24/7</strong>
+<span>AVAILABLE</span>
+</div>
+
+<div>
+<strong>PAYMENT</strong>
+<span>ON DELIVERY</span>
+</div>
+
+<div>
+<strong>NAIROBI</strong>
+<span>& SURROUNDING AREAS</span>
+</div>
+
+</div>
+
+<!-- FLEET -->
+<section id="fleet">
+
+<div class="container">
+
+<div class="section-label">OUR VEHICLES</div>
+
+<h2 class="section-title">
+CHOOSE YOUR<br>
+<strong>RIDE.</strong>
+</h2>
+
+<div class="fleet-grid">
+
+<div class="car">
+<div class="car-img">
+<img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=1200&q=85" alt="Executive Sedan">
+</div>
+<div class="car-info">
+<h3>Executive Sedan</h3>
+<p>Comfortable and refined for city driving and business travel.</p>
+<a class="inquire" href="#inquiry">INQUIRE NOW →</a>
+</div>
+</div>
+
+<div class="car">
+<div class="car-img">
+<img src="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=1200&q=85" alt="Premium SUV">
+</div>
+<div class="car-info">
+<h3>Premium SUV</h3>
+<p>Spacious, comfortable and suitable for longer journeys.</p>
+<a class="inquire" href="#inquiry">INQUIRE NOW →</a>
+</div>
+</div>
+
+<div class="car">
+<div class="car-img">
+<img src="https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&w=1200&q=85" alt="Premium Vehicle">
+</div>
+<div class="car-info">
+<h3>Premium Vehicle</h3>
+<p>Make your trip comfortable with a quality rental option.</p>
+<a class="inquire" href="#inquiry">INQUIRE NOW →</a>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- WHY ALSEA -->
+<section class="why">
+
+<div class="container">
+
+<div class="section-label">WHY ALSEA</div>
+
+<h2 class="section-title">
+BUILT FOR<br>
+<strong>YOUR JOURNEY.</strong>
+</h2>
+
+<div class="why-grid">
+
+<div class="feature">
+<div class="feature-number">01</div>
+<h3>24/7 Availability</h3>
+<p>Get in touch with Alsea Car Rental whenever you need assistance.</p>
+</div>
+
+<div class="feature">
+<div class="feature-number">02</div>
+<h3>Easy Inquiry</h3>
+<p>Contact us directly through WhatsApp and discuss your rental needs.</p>
+</div>
+
+<div class="feature">
+<div class="feature-number">03</div>
+<h3>Flexible Service</h3>
+<p>Options available for personal, business and travel requirements.</p>
+</div>
+
+<div class="feature">
+<div class="feature-number">04</div>
+<h3>Payment on Delivery</h3>
+<p>Payment on delivery is available for your convenience.</p>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+
+<div class="container">
+
+<div class="section-label">OUR SERVICES</div>
+
+<h2 class="section-title">
+RENTAL<br>
+<strong>MADE EASY.</strong>
+</h2>
+
+<div class="services-grid">
+
+<div class="service">
+<h3>Self Drive</h3>
+<p>Choose your vehicle and enjoy the freedom to drive yourself.</p>
+</div>
+
+<div class="service">
+<h3>Chauffeur Service</h3>
+<p>Request a professional driver when you prefer a more relaxed journey.</p>
+</div>
+
+<div class="service">
+<h3>Airport Transfers</h3>
+<p>Arrange convenient transportation for airport journeys.</p>
+</div>
+
+<div class="service">
+<h3>Corporate Hire</h3>
+<p>Rental solutions for meetings, business trips and corporate travel.</p>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="why">
+
+<div class="container">
+
+<div class="section-label">HOW IT WORKS</div>
+
+<h2 class="section-title">
+THREE SIMPLE<br>
+<strong>STEPS.</strong>
+</h2>
+
+<div class="steps">
+
+<div class="step">
+<div class="step-number">01</div>
+<h3>Choose</h3>
+<p>Browse the available vehicle options and choose what suits you.</p>
+</div>
+
+<div class="step">
+<div class="step-number">02</div>
+<h3>Inquire</h3>
+<p>Send your rental requirements through our inquiry form.</p>
+</div>
+
+<div class="step">
+<div class="step-number">03</div>
+<h3>Confirm</h3>
+<p>Our team will contact you on WhatsApp to discuss the booking.</p>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- INQUIRY -->
+<section class="inquiry" id="inquiry">
+
+<div class="container">
+
+<div class="section-label">RENTAL INQUIRY</div>
+
+<h2 class="section-title">
+LET'S GET<br>
+<strong>YOU MOVING.</strong>
+</h2>
+
+<form class="form" id="rentalForm">
+
+<input id="name" type="text" placeholder="Your Name" required>
+
+<input id="phone" type="tel" placeholder="Your Phone Number" required>
+
+<select id="vehicle" required>
+<option value="">Select Vehicle Type</option>
+<option>Executive Sedan</option>
+<option>Premium SUV</option>
+<option>Premium Vehicle</option>
+</select>
+
+<input id="date" type="date" required>
+
+<textarea id="message" placeholder="Tell us about your rental requirements"></textarea>
+
+<button type="submit">
+SEND INQUIRY ON WHATSAPP
+</button>
+
+</form>
+
+</div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+
+<div class="container">
+
+<div class="section-label">CONTACT ALSEA</div>
+
+<h2 class="section-title">
+READY TO<br>
+<strong>DRIVE?</strong>
+</h2>
+
+<div class="contact-grid">
+
+<div class="contact-card">
+<h3>WhatsApp / Phone</h3>
+<p>+254 716 804186</p>
+<a class="btn green" href="https://wa.me/254716804186">
+CHAT ON WHATSAPP
+</a>
+</div>
+
+<div class="contact-card">
+<h3>WhatsApp / Phone</h3>
+<p>+254 738 152349</p>
+<a class="btn green" href="https://wa.me/254738152349">
+CHAT ON WHATSAPP
+</a>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+
+<h2>YOUR JOURNEY<br>STARTS HERE.</h2>
+
+<p>
+Alsea Car Rental — premium vehicle rental services
+in Nairobi, Kilimani, Ruiru and surrounding areas.
+</p>
+
+<a class="btn" href="#inquiry">MAKE AN INQUIRY</a>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+
+<div class="footer">
+
+<div>
+<img src="logo.png" alt="Alsea Car Rental" class="footer-logo">
+
+<p>
+Premium car rental services in Nairobi,
+Kilimani, Ruiru and surrounding areas.
+</p>
+</div>
+
+<div class="footer-links">
+<a href="#home">Home</a>
+<a href="#fleet">Fleet</a>
+<a href="#services">Services</a>
+<a href="#inquiry">Inquiry</a>
+<a href="#contact">Contact</a>
+</div>
+
+</div>
+
+<div class="copyright">
+© 2026 Alsea Car Rental. All rights reserved.
+</div>
+
+</footer>
+
+<a class="whatsapp"
+href="https://wa.me/254716804186"
+target="_blank"
+aria-label="WhatsApp">
+WA
+</a>
+
+<script>
+
+document.getElementById("rentalForm").addEventListener("submit",function(e){
+
+e.preventDefault();
+
+const name=document.getElementById("name").value;
+const phone=document.getElementById("phone").value;
+const vehicle=document.getElementById("vehicle").value;
+const date=document.getElementById("date").value;
+const message=document.getElementById("message").value;
+
+const whatsappMessage =
+"Hello Alsea Car Rental!%0A%0A"+
+"I would like to make a rental inquiry.%0A%0A"+
+"Name: "+name+"%0A"+
+"Phone: "+phone+"%0A"+
+"Vehicle: "+vehicle+"%0A"+
+"Rental Date: "+date+"%0A"+
+"Requirements: "+message;
+
+window.open(
+"https://wa.me/254716804186?text="+
+encodeURIComponent(
+"Hello Alsea Car Rental!\n\n"+
+"I would like to make a rental inquiry.\n\n"+
+"Name: "+name+"\n"+
+"Phone: "+phone+"\n"+
+"Vehicle: "+vehicle+"\n"+
+"Rental Date: "+date+"\n"+
+"Requirements: "+message
+),
+"_blank"
+);
+
+});
+
+</script>
+
+</body>
+  </html>
